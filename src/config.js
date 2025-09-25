@@ -1,7 +1,7 @@
 // API Configuration
 
 // API_ROOT is the concrete base path for all backend endpoints.
-export const API_ROOT = (import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}` : '') + '/api';
+export const API_ROOT = (import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}` : '') + '';
 
 // App Configuration
 export const APP_CONFIG = {
@@ -41,30 +41,30 @@ export const isProduction = import.meta.env.PROD
 // API endpoints
 export const ENDPOINTS = {
   auth: {
-    login: '/api/auth/login',
-    register: '/api/auth/register',
-    logout: '/api/auth/logout',
-    verifyOtp: '/api/auth/verify-otp',
-    forgotPassword: '/api/auth/forgot-password',
-    resetPassword: '/api/auth/reset-password'
+    login: '/auth/login',
+    register: '/auth/register',
+    logout: '/auth/logout',
+    verifyOtp: '/auth/verify-otp',
+    forgotPassword: '/auth/forgot-password',
+    resetPassword: '/auth/reset-password'
   },
   jobs: {
-    create: '/api/jobs',
-    list: '/api/jobs',
-    details: '/api/jobs/:id',
-    accept: '/api/jobs/:id/accept',
-    cancel: '/api/jobs/:id/cancel',
-    complete: '/api/jobs/:id/complete',
-    rate: '/api/jobs/:id/rate'
+    create: '/jobs',
+    list: '/jobs',
+    details: '/jobs/:id',
+    accept: '/jobs/:id/accept',
+    cancel: '/jobs/:id/cancel',
+    complete: '/jobs/:id/complete',
+    rate: '/jobs/:id/rate'
   },
   workers: {
-    profile: '/api/workers/profile',
-    stats: '/api/workers/stats',
-    jobs: '/api/workers/jobs'
+    profile: '/workers/profile',
+    stats: '/workers/stats',
+    jobs: '/workers/jobs'
   },
   clients: {
-    profile: '/api/clients/profile',
-    stats: '/api/clients/stats',
-    jobs: '/api/clients/jobs'
+    profile: '/clients/profile',
+    stats: '/clients/stats',
+    jobs: '/clients/jobs'
   }
 }
