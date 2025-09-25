@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { Card, CardContent } from '../ui/card'
-import { assets } from '../../assets/assets'
+import { assets } from '@/assets/assets'
 import { ArrowRight, Sparkles } from "lucide-react"
 import { Link } from "react-router-dom"
 

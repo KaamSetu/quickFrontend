@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react"
 import { Star, Sparkles, Award, Clock } from "lucide-react"
 import { Card, CardContent } from "../ui/card"
-import { assets } from "../../assets/assets"
+import { assets } from "@/assets/assets"
 
 const FeaturesWorkers = () => {
   const [isVisible, setIsVisible] = useState(false)

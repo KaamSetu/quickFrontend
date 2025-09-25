@@ -1,4 +1,4 @@
- import { logo } from "../assets/assets"
+ import { logo } from "@/assets/assets"
  import { Link } from "react-router-dom"
 
 export default function Footer() {

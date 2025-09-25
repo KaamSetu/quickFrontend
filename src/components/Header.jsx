@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { ChevronDown, User, Briefcase, LogOut, Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { logo } from '../assets/assets';
+import { logo } from '@/assets/assets';
 
 function Header() {
   const { isAuthenticated, user } = useAuthStore();

@@ -7,7 +7,7 @@ import { useAuthStore } from '../../store/auth';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { OTPInput } from '../../components/OTPInput';
-import { logo } from '../../assets/assets';
+import { logo } from '@/assets/assets';
 
 export function OtpVerification() {
   const navigate = useNavigate();
