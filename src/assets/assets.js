@@ -1,59 +1,65 @@
+// src/assets/assets.js
+
 // Logo
-export const logo = "./logo.png"
+import logoImg from './logo.png';
 
 // Service-related images
-const acRepair = "./acRepair.png"
-const carWash = "./carWash.png"
-const cleaner = "./cleaner.png"
-const cook = "./cook.png"
-const driver = "./driver.png"
-const electrician = "./electrician.png"
-const furnitureAssembler = "./furnitureAssembler.png"
-const gardner = "./gardner.png"
-const helper = "./helper.png"
-const interiorDecor = "./interiorDecor.png"
-const mason = "./mason.png"
-const mechanic = "./mechanic.png"
-const nurse = "./nurse.png"
-const pestControl = "./pestControl.png"
-const plumber = "./plumber.png"
-const sofaCleaning = "./sofaCleaning.png"
-const tailor = "./tailor.png"
-const tiler = "./tiler.png"
-const tutor = "./tutor.png"
-const arrowRight = "./arrow-right.png"
-const rajeshKumar = "./rajeshKumar.jpg"
-const priyaSharma = "./priyaSharma.jpg"
-const sunitaDevi = "./sunitaDevi.jpg"
-const amitSingh = "./amitSingh.jpg"
+import acRepairImg from './acRepair.png';
+import carWashImg from './carWash.png';
+import cleanerImg from './cleaner.png';
+import cookImg from './cook.png';
+import driverImg from './driver.png';
+import electricianImg from './electrician.png';
+import furnitureAssemblerImg from './furnitureAssembler.png';
+import gardnerImg from './gardner.png';
+import helperImg from './helper.png';
+import interiorDecorImg from './interiorDecor.png';
+import masonImg from './mason.png';
+import mechanicImg from './mechanic.png';
+import nurseImg from './nurse.png';
+import pestControlImg from './pestControl.png';
+import plumberImg from './plumber.png';
+import sofaCleaningImg from './sofaCleaning.png';
+import tailorImg from './tailor.png';
+import tilerImg from './tiler.png';
+import tutorImg from './tutor.png';
+import arrowRightImg from './arrow-right.png';
 
+// People images
+import rajeshKumarImg from './rajeshKumar.jpg';
+import priyaSharmaImg from './priyaSharma.jpg';
+import sunitaDeviImg from './sunitaDevi.jpg';
+import amitSinghImg from './amitSingh.jpg';
+
+// Export logo separately
+export const logo = logoImg;
 
 // Legacy assets object for backward compatibility
 export const assets = {
-    acRepair,
-    // carpenter: "/assets/carpenter.png", // Note: carpenter.png not found in assets
-    electrician,
-    plumber,
-    // painter: "/assets/painter.png", // Note: painter.png not found in assets
-    carWash,
-    cleaner,
-    furnitureAssembler,
-    gardner,
-    helper,
-    interiorDecor,
-    mason,
-    mechanic,
-    nurse,
-    pestControl,
-    priyaSharma,
-    rajeshKumar,
-    sofaCleaning,
-    sunitaDevi,
-    tailor,
-    tiler,
-    arrowRight,
-    tutor,
-    amitSingh,
-    cook,
-    driver,
-}
+  acRepair: acRepairImg,
+  // carpenter: '/assets/carpenter.png', // Not found
+  electrician: electricianImg,
+  plumber: plumberImg,
+  // painter: '/assets/painter.png', // Not found
+  carWash: carWashImg,
+  cleaner: cleanerImg,
+  furnitureAssembler: furnitureAssemblerImg,
+  gardner: gardnerImg,
+  helper: helperImg,
+  interiorDecor: interiorDecorImg,
+  mason: masonImg,
+  mechanic: mechanicImg,
+  nurse: nurseImg,
+  pestControl: pestControlImg,
+  priyaSharma: priyaSharmaImg,
+  rajeshKumar: rajeshKumarImg,
+  sofaCleaning: sofaCleaningImg,
+  sunitaDevi: sunitaDeviImg,
+  tailor: tailorImg,
+  tiler: tilerImg,
+  arrowRight: arrowRightImg,
+  tutor: tutorImg,
+  amitSingh: amitSinghImg,
+  cook: cookImg,
+  driver: driverImg,
+};
