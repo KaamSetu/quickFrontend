@@ -680,7 +680,7 @@ export default function MyAccount() {
                 {isEditing && (
                   <label className="absolute bottom-0 right-0 bg-gradient-to-r from-[#445FA2] to-[#009889] text-white p-2 rounded-full cursor-pointer hover:scale-110 transition-all duration-300 shadow-lg">
                     <Camera className="w-3 h-3 sm:w-4 sm:h-4" />
-                    <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" disabled={isUploading} />
+                    <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" disabled={isUploading} autoComplete="off" />
                   </label>
                 )}
                 {isUploading && (
@@ -740,6 +740,7 @@ export default function MyAccount() {
                 {isEditing ? (
                   <Input
                     id="name"
+                    autoComplete="name"
                     value={editData.name}
                     onChange={(e) => setEditData({ ...editData, name: e.target.value })}
                     className="mt-2 border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-12"
@@ -765,6 +766,7 @@ export default function MyAccount() {
                   <div className="relative mt-2">
                     <Input
                       id="phone"
+                      autoComplete="tel"
                       value={editData.phone}
                       onChange={(e) => { setEditData({ ...editData, phone: e.target.value }); setVerificationStatus(prev => ({ ...prev, phone: userData.phone === e.target.value })); }}
                       className="border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-12 pr-24"
@@ -811,6 +813,7 @@ export default function MyAccount() {
                     <Input
                       id="email"
                       type="email"
+                      autoComplete="email"
                       value={editData.email}
                       onChange={(e) => { setEditData({ ...editData, email: e.target.value }); setVerificationStatus(prev => ({ ...prev, email: userData.email === e.target.value })); }}
                       className="border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-12 pr-24"
@@ -844,6 +847,7 @@ export default function MyAccount() {
                   <div className="relative mt-2">
                     <Input
                       id="address"
+                      autoComplete="address-level2"
                       value={editData.address}
                       onChange={handleLocationChange}
                       onBlur={() => {
@@ -1062,15 +1066,15 @@ export default function MyAccount() {
           <div className="py-4 space-y-4">
             <div className="space-y-2">
               <Label htmlFor="current-password">Current Password</Label>
-              <Input id="current-password" type="password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} placeholder="••••••••" />
+              <Input id="current-password" type="password" autoComplete="current-password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} placeholder="••••••••" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="new-password">New Password</Label>
-              <Input id="new-password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} placeholder="••••••••" />
+              <Input id="new-password" type="password" autoComplete="new-password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} placeholder="••••••••" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="confirm-password">Confirm New Password</Label>
-              <Input id="confirm-password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="••••••••" />
+              <Input id="confirm-password" type="password" autoComplete="new-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="••••••••" />
             </div>
           </div>
           <DialogFooter>
@@ -1139,7 +1143,7 @@ export default function MyAccount() {
                 <UploadCloud className="w-8 h-8 text-gray-400 mb-2" />
                 <span className="text-sm text-gray-600 font-semibold">{aadhaarFile ? aadhaarFile.name : 'Click to upload'}</span>
                 <span className="text-xs text-gray-500">PNG, JPG, or PDF (max 5MB)</span>
-                <input id="aadhaar-file" type="file" className="hidden" accept=".png,.jpg,.jpeg,.pdf" onChange={handleAadhaarFileSelect} />
+                <input id="aadhaar-file" type="file" className="hidden" accept=".png,.jpg,.jpeg,.pdf" onChange={handleAadhaarFileSelect} autoComplete="off" />
               </label>
             </div>
           </div>

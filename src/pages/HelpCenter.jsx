@@ -115,12 +115,13 @@ export default function HelpCenterPage() {
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <input
-                    type="text"
-                    placeholder="Search help articles..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 focus:border-[#445FA2] rounded-xl focus:outline-none transition-all duration-300"
-                  />
+                      type="text"
+                      placeholder="Search help articles..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      autoComplete="search"
+                      className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 focus:border-[#445FA2] rounded-xl focus:outline-none transition-all duration-300"
+                    />
                 </div>
               </CardContent>
             </Card>

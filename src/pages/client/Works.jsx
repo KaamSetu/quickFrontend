@@ -583,6 +583,7 @@ export default function Works() {
                 onChange={(e) => setEnteredOTP(e.target.value)}
                 maxLength={6}
                 className="mt-2 text-center text-lg font-mono tracking-widest rounded-xl border-2 focus:border-[#445FA2]"
+                autoComplete="one-time-code"
               />
             </div>
           </div>

@@ -346,9 +346,13 @@ export default function PostWork() {
                 placeholder="Enter a brief title for your job..."
                 value={title}
                 onChange={(e) => e.target.value.length <= 100 && setTitle(e.target.value)}
-                className="border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl text-base sm:text-lg"
+                  autoComplete="off" // Changed to "off" for title
+                  className="border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl text-base sm:text-lg"
                 required
               />
+              <div className="mt-2 text-xs sm:text-sm text-gray-500">
+                {title.length}/100 characters • Keep it short and descriptive
+              </div>
               <div className="mt-2 text-xs sm:text-sm text-gray-500">
                 {title.length}/100 characters • Keep it short and descriptive
               </div>
@@ -370,6 +374,7 @@ export default function PostWork() {
                     onChange={handleImageUpload}
                     className="hidden"
                     id="image-upload"
+                    autoComplete="off"
                   />
                   <label htmlFor="image-upload" className="cursor-pointer relative z-10">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-[#445FA2] to-[#009889] rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -426,6 +431,7 @@ export default function PostWork() {
                   <div className="relative">
                     <Input
                       placeholder="Enter city/area name"
+                      autoComplete="address-level2" // Changed to "address-level2" for location
                       value={jobLocation}
                       onChange={(e) => {
                         const newLocation = e.target.value;

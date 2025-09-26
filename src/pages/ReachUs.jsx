@@ -291,6 +291,7 @@ export default function ReachUsPage() {
                       id="name"
                       name="name"
                       type="text"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
@@ -308,6 +309,7 @@ export default function ReachUsPage() {
                       id="email"
                       name="email"
                       type="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       required

@@ -136,6 +136,7 @@ export function Register() {
                       id="name"
                       type="text"
                       placeholder="Enter your full name"
+                      autoComplete="name"
                       className={`pl-10 h-12 rounded-lg border-gray-300 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-[#445FA2] focus:ring-[#445FA2] transition-all duration-200 backdrop-blur-sm ${errors.name ? 'border-red-500' : ''}`}
                       {...register('name', { required: 'Full name is required' })}
                     />
@@ -154,6 +155,7 @@ export function Register() {
                       id="email"
                       type="email"
                       placeholder="Enter your email"
+                      autoComplete="email"
                       className={`pl-10 h-12 rounded-lg border-gray-300 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-[#445FA2] focus:ring-[#445FA2] transition-all duration-200 backdrop-blur-sm ${errors.email ? 'border-red-500' : ''}`}
                       {...register('email', { required: 'Email is required' })}
                     />
@@ -172,6 +174,7 @@ export function Register() {
                       id="phone"
                       type="tel"
                       placeholder="Enter your phone number"
+                      autoComplete="tel"
                       className={`pl-10 h-12 rounded-lg border-gray-300 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-[#445FA2] focus:ring-[#445FA2] transition-all duration-200 backdrop-blur-sm ${errors.phone ? 'border-red-500' : ''}`}
                       {...register('phone', { required: 'Phone number is required' })}
                     />
@@ -227,6 +230,7 @@ export function Register() {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
+                      autoComplete="new-password"
                       className={`pl-10 pr-10 h-12 rounded-lg border-gray-300 bg-white/90 text-gray-900 placeholder-gray-500 focus:border-[#445FA2] focus:ring-[#445FA2] transition-all duration-200 backdrop-blur-sm ${errors.password ? 'border-red-500' : ''}`}
                       {...register('password', { required: 'Password is required' })}
                     />

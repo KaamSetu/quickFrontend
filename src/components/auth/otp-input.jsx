@@ -95,7 +95,8 @@ export function OTPInput({ length = 6, onChange, onComplete, className }) {
             "hover:border-[#445FA2]/50 hover:shadow-sm",
             "bg-white/80 backdrop-blur-sm text-gray-900 placeholder-gray-500",
           )}
-          autoComplete="off"
+          autoComplete="one-time-code"
+          aria-label={`Enter OTP digit ${index + 1}`}
         />
       ))}
     </div>

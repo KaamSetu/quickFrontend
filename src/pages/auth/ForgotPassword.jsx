@@ -75,6 +75,7 @@ export function ForgotPassword() {
                       id="email"
                       type="text"
                       placeholder="Enter your email or phone number"
+                      autoComplete="email"
                       className={`pl-10 h-12 rounded-lg border-gray-200 bg-white/80 text-gray-900 placeholder-gray-500 focus:border-[#445FA2] focus:ring-[#445FA2] transition-all duration-200 backdrop-blur-sm ${errors.email ? 'border-red-500' : ''}`}
                       {...register('email')}
                     />

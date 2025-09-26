@@ -633,6 +633,7 @@ export default function WorkerAccountPage() {
                     onChange={handleProfilePictureUpload}
                     className="hidden"
                     disabled={isUploading}
+                    autoComplete="off"
                   />
                 </label>
               )}
@@ -651,6 +652,7 @@ export default function WorkerAccountPage() {
               {isEditing ? (
                 <Input
                   id="name"
+                  autoComplete="name"
                   value={editData.name}
                   onChange={(e) => setEditData((prev) => ({ ...prev, name: e.target.value }))}
                   className="mt-1 border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-10 sm:h-12"
@@ -666,6 +668,7 @@ export default function WorkerAccountPage() {
                 <div className="relative mt-1">
                   <Input
                     id="phone"
+                    autoComplete="tel"
                     value={editData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     className="border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-10 sm:h-12"
@@ -695,6 +698,7 @@ export default function WorkerAccountPage() {
                   <Input
                     id="email"
                     type="email"
+                    autoComplete="email"
                     value={editData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className="border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-10 sm:h-12"
@@ -725,6 +729,7 @@ export default function WorkerAccountPage() {
                 <div className="relative mt-1">
                   <Input
                     id="address"
+                    autoComplete="address-level2"
                     value={editData.address}
                     onChange={handleLocationChange}
                     placeholder="Enter your city or area name"
@@ -1252,6 +1257,7 @@ export default function WorkerAccountPage() {
                 <Input
                   id="current-password"
                   type="password"
+                  autoComplete="current-password"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   className="pl-10"
@@ -1266,6 +1272,7 @@ export default function WorkerAccountPage() {
               <Input
                 id="new-password"
                 type="password"
+                autoComplete="new-password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="Enter your new password"
@@ -1278,6 +1285,7 @@ export default function WorkerAccountPage() {
               <Input
                 id="confirm-password"
                 type="password"
+                autoComplete="new-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm your new password"
