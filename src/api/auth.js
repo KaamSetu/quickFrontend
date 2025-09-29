@@ -12,19 +12,22 @@ export const authApi = {
 
       if (!response.ok) {
         const error = await response.json();
+        // Prefer server-provided message for 4xx responses so specific errors (e.g. registration incomplete)
+        // bubble up to the UI instead of being replaced by a generic client-side message.
+        if (response.status >= 400 && response.status < 500 && error.message) {
+          throw new Error(error.message);
+        }
+
         let errorMessage = error.message || "Registration failed";
-        
-        // More specific error messages
+        // Fallback client-side mapping for less informative responses
         if (error.message?.includes('already exists')) {
           errorMessage = 'An account with this email or phone already exists.';
         } else if (error.message?.includes('validation')) {
           errorMessage = 'Please check your input and try again.';
-        } else if (response.status === 400) {
-          errorMessage = 'Invalid registration data. Please check your details.';
         } else if (response.status >= 500) {
           errorMessage = 'Server error. Please try again later.';
         }
-        
+
         throw new Error(errorMessage);
       }
 
