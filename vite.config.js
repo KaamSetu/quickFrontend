@@ -18,14 +18,22 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     rollupOptions: {
+      input: {
+        main: 'index.html',
+        'service-worker': 'public/service-worker.js'
+      },
       output: {
-        entryFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: (chunkInfo) => 
+          chunkInfo.name === 'service-worker' 
+            ? '[name].js' 
+            : 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]'
-      },
-      // Ensure service worker is not processed by Vite
-      external: ['service-worker.js']
-    }
+      }
+    },
+    // Copy service worker to root
+    manifest: true,
+    copyPublicDir: true
   },
   server: {
     port: 5173,
