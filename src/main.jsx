@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AuthProvider from './components/AuthProvider';
-import router from './routes';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
-
+import router from './routes';
 // Create a client
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           closeButton
           duration={4000}
         />
+        <Analytics />
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>

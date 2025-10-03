@@ -12,15 +12,15 @@ const ASSETS_TO_CACHE = [
   '/assets/logo-*.png',
   
   // Icons
-  '/icons/icon-72x72.png',
-  '/icons/icon-96x96.png',
-  '/icons/icon-128x128.png',
-  '/icons/icon-144x144.png',
-  '/icons/icon-152x152.png',
-  '/icons/icon-192x192.png',
-  '/icons/icon-384x384.png',
-  '/icons/icon-512x512.png',
-  '/icons/logo.png',
+  '/icons/icon-72x72.webp',
+  '/icons/icon-96x96.webp',
+  '/icons/icon-128x128.webp',
+  '/icons/icon-144x144.webp',
+  '/icons/icon-152x152.webp',
+  '/icons/icon-192x192.webp',
+  '/icons/icon-384x384.webp',
+  '/icons/icon-512x512.webp',
+  '/icons/logo.webp',
   
   // Screenshots for PWA installation
   '/screenshots/screenshot1.webp',
