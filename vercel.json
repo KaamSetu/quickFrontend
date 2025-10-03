@@ -12,12 +12,7 @@
   "routes": [
     {
       "src": "/service-worker.js",
-      "dest": "/service-worker.js",
-      "headers": {
-        "cache-control": "no-cache",
-        "content-type": "application/javascript",
-        "Service-Worker-Allowed": "/"
-      }
+      "dest": "/service-worker.js"
     },
     {
       "src": "/assets/(.*)",
