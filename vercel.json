@@ -11,12 +11,37 @@
   ],
   "routes": [
     {
+      "src": "/service-worker.js",
+      "dest": "/service-worker.js",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-type": "application/javascript",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/service-worker.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" },
+        { "key": "Content-Type", "value": "application/javascript" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
+      ]
+    },
+    {
+      "source": "/offline.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
     }
   ]
 }
