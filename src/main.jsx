@@ -33,16 +33,55 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
+// Register service worker with production check
+const registerServiceWorker = async () => {
+  if ('serviceWorker' in navigator) {
+    try {
+      // Only register in production
+      if (import.meta.env.PROD) {
+        const registration = await navigator.serviceWorker.register('/service-worker.js', {
+          scope: '/',
+          // Remove type: 'module' as we're not using ES modules in the service worker
+        });
 
-// Register service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('ServiceWorker registration successful');
-      })
-      .catch(err => {
-        console.log('ServiceWorker registration failed: ', err);
-      });
-  });
+        registration.addEventListener('updatefound', () => {
+          console.log('New service worker found, installing...');
+          const newWorker = registration.installing;
+          
+          newWorker.addEventListener('statechange', () => {
+            console.log('Service worker state changed:', newWorker.state);
+            
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // New update available
+              console.log('New content is available; please refresh.');
+            } else if (newWorker.state === 'activated') {
+              console.log('Service worker activated');
+            }
+          });
+        });
+
+        // Check for updates on page load
+        registration.update().catch(err => 
+          console.log('Service worker update check failed:', err)
+        );
+        
+        // Check for updates every hour
+        setInterval(() => {
+          registration.update().catch(err => 
+            console.log('Service worker update check failed:', err)
+          );
+        }, 60 * 60 * 1000);
+      }
+    } catch (error) {
+      console.error('Service worker registration failed:', error);
+    }
+  }
+};
+
+// Register service worker after the app loads
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  // In case the document has finished parsing, document's event handler may not execute
+  setTimeout(registerServiceWorker, 0);
+} else {
+  window.addEventListener('load', registerServiceWorker);
 }
