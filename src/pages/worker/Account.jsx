@@ -405,7 +405,7 @@ export default function WorkerAccountPage() {
         loading: `Sending verification code to ${value}...`,
         success: () => {
           setIsOtpModalOpen(true);
-          return `OTP sent successfully to ${value}`;
+          return `OTP sent successfully to ${verificationTarget === 'email' ? profileData?.email : profileData?.phoneNumber || value}`;
         },
         error: (err) => err.message || "Failed to send OTP",
       });
@@ -422,7 +422,7 @@ export default function WorkerAccountPage() {
         },
         success: () => {
           setIsOtpModalOpen(true);
-          return `OTP sent successfully to ${value}`;
+          return `OTP sent successfully to ${verificationTarget === 'email' ? profileData?.email : profileData?.phoneNumber || value}`;
         }
       });
     }
