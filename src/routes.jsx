@@ -17,6 +17,7 @@ import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 import NotFound from "@/pages/NotFound";
 import Unauthorized from "@/pages/Unauthorized";
+import Blocked from "@/pages/Blocked";
 import TestAuth from "@/pages/TestAuth";
 // Auth Pages
 import { Login } from "@/pages/auth/Login";
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <Privacy /> },
       { path: "/terms", element: <Terms /> },
       { path: "/unauthorized", element: <Unauthorized /> },
+      { path: "/blocked", element: <Blocked /> },
       { path: "/test-auth", element: <TestAuth /> },
     ],
   },

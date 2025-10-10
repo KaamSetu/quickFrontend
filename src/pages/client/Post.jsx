@@ -353,9 +353,6 @@ export default function PostWork() {
               <div className="mt-2 text-xs sm:text-sm text-gray-500">
                 {title.length}/100 characters • Keep it short and descriptive
               </div>
-              <div className="mt-2 text-xs sm:text-sm text-gray-500">
-                {title.length}/100 characters • Keep it short and descriptive
-              </div>
             </div>
 
             {/* Image Upload */}

@@ -36,7 +36,8 @@ export const useAuthStore = create(
           name: userData.name,
           email: userData.email?.email || userData.email,
           role: userData.role,
-          profilePicture: userData.profilePicture
+          profilePicture: userData.profilePicture,
+          blocked: userData.blocked === true
         };
         
         set({
@@ -97,7 +98,7 @@ export const useAuthStore = create(
             const data = await response.json();
             if (data.success) {
               set({
-                user: data.user,
+                user: { ...data.user, blocked: data.user?.blocked === true },
                 isAuthenticated: true,
                 isLoading: false,
                 error: null

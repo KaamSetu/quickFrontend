@@ -38,6 +38,11 @@ export function ProtectedRoute({ children, requiredRole }) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
+  // If authenticated but blocked, redirect to blocked page
+  if (user?.blocked) {
+    return <Navigate to={'/blocked'} replace />;
+  }
+
   // If authenticated but wrong role, show error toast and redirect
   if (requiredRole && user.role !== requiredRole) {
     if (!roleErrorShown.current) {

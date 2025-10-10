@@ -55,6 +55,12 @@ export function Login() {
         // Set user in store - tokens are now managed by the server via cookies
         login(response.user);
         
+        // If blocked, redirect to blocked page
+        if (response?.user?.blocked) {
+          navigate('/blocked', { replace: true });
+          return;
+        }
+
         // Show success message
         toast.success('Login successful! Redirecting...', {
           position: 'top-center',

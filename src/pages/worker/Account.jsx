@@ -138,6 +138,8 @@ export default function WorkerAccountPage() {
           setAadhaarVerificationStatus('verified')
         } else if (worker.aadhaar?.verificationStatus === 'pending') {
           setAadhaarVerificationStatus('pending')
+        } else {
+          setAadhaarVerificationStatus('none')
         }
       }
     } catch (error) {
@@ -428,44 +430,42 @@ export default function WorkerAccountPage() {
     }
   }
 
-  const handleVerifyAadhaar = async (_aadhaar, file) => {
+  const handleVerifyAadhaar = async (aadhaarNumber, file) => {
     if (!file) {
       toast.error("Please upload your Aadhaar card")
+      return
+    }
+
+    // Basic client-side validation consistent with server
+    const clean = String(aadhaarNumber || '').replace(/[\s-]/g, '')
+    if (clean.length !== 12 || !/^\d{12}$/.test(clean)) {
+      toast.warning("Invalid Aadhaar Number", {
+        description: "Please enter a valid 12-digit Aadhaar number without any spaces or dashes."
+      })
       return
     }
     
     setIsVerifyingAadhaar(true)
     try {
-      // Simulate API call for file upload
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      
-      // In a real app, you would upload the file to your server
-      // const formData = new FormData()
-      // formData.append('aadhaar', aadhaar)
-      // formData.append('file', file)
-      // const response = await workerApi.uploadAadhaarDocument(formData)
-      
-      // Set status to pending after successful upload
-      setAadhaarVerificationStatus('pending')
-      toast.success("Aadhaar document uploaded successfully! Verification pending.")
-      
-      // Simulate status change after some time (in a real app this would come from backend)
-      setTimeout(() => {
-        setAadhaarVerificationStatus('under_process')
-        toast.info("Your Aadhaar verification is now being processed")
-        
-        // Simulate verification completion after some more time
-        setTimeout(() => {
-          setAadhaarVerificationStatus('verified')
-          setAadhaarVerified(true)
-          toast.success("Your Aadhaar has been successfully verified!")
-        }, 10000) // 10 seconds for demo purposes
-      }, 5000) // 5 seconds for demo purposes
+      const formData = new FormData()
+      formData.append('aadhaarNumber', clean)
+      formData.append('aadhaarDocument', file)
+
+      const response = await workerApi.uploadAadhaarDocument(formData)
+
+      if (response.success) {
+        setAadhaarVerificationStatus('pending')
+        toast.success("Verification Submitted", {
+          description: "Thank you! Your Aadhaar document is under review. This may take up to 24 hours."
+        })
+        setIsAadhaarModalOpen(false)
+        // Refresh profile to reflect any new server state
+        fetchProfile()
+      }
     } catch (error) {
-      toast.error("An error occurred during document upload.")
+      toast.error(error.message || "Failed to upload Aadhaar document. Please try again.")
     } finally {
       setIsVerifyingAadhaar(false)
-      setIsAadhaarModalOpen(false)
     }
   }
   
@@ -865,7 +865,7 @@ export default function WorkerAccountPage() {
               <SelectTrigger className="mt-2 border-2 border-gray-200 focus:border-[#445FA2] transition-all duration-300 rounded-xl h-10 sm:h-12">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white max-h-96 overflow-y-auto">
                 {[...Array(20)].map((_, i) => (
                   <SelectItem key={i + 1} value={(i + 1).toString()}>
                     {i + 1} year{i + 1 > 1 ? "s" : ""}
@@ -1176,10 +1176,6 @@ export default function WorkerAccountPage() {
                   <div className="flex justify-between items-center p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl">
                     <span className="text-gray-600 text-sm">Completion Rate</span>
                     <span className="font-bold text-[#009889]">{stats.completionRate}%</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl">
-                    <span className="text-gray-600 text-sm">Response Time</span>
-                    <span className="font-bold text-[#445FA2]">{stats.responseTime}</span>
                   </div>
                 </div>
               </CardContent>
