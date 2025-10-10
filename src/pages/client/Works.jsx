@@ -299,6 +299,27 @@ export default function Works() {
       );
     }
 
+    // Show rate button for completed jobs not yet rated
+    if (job.status === 'completed') {
+      const alreadyRated = (job.workerRating && job.workerRating > 0);
+      if (job.workerId && !alreadyRated) {
+        return (
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => {
+              setSelectedJob(job);
+              setShowRatingModal(true);
+            }}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white"
+          >
+            Rate Worker
+          </Button>
+        );
+      }
+      return null;
+    }
+
     // Default return for any other status
     return null;
   }
@@ -656,10 +677,10 @@ export default function Works() {
             </Button>
             <Button 
               onClick={() => handleRateWorker(selectedJob?._id)}
-              disabled={actionLoading || rating === 0}
+              disabled={isSubmittingRating || rating === 0}
               className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white rounded-xl"
             >
-              {actionLoading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+              {isSubmittingRating ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
               Submit Rating
             </Button>
           </DialogFooter>
